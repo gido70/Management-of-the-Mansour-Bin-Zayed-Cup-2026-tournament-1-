@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تفاصيل المباراة</title>
+  <link rel="icon" type="image/png" href="assets/img/logo-tournament.png">
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body id="page">
+<header class="topbar">
+  <div class="topbar-logos">
+    <img class="logo" src="assets/img/logo-committee-white.png" alt="شعار اللجنة" />
+  </div>
+  <div class="brand">
+    <div class="brand-title">بطولة كأس منصور بن زايد 2026</div>
+    <div class="brand-sub">تفاصيل المباراة</div>
+  </div>
+  <div class="topbar-logos">
+    <img class="logo" src="assets/img/logo-cup-white.png" alt="شعار البطولة" />
+  </div>
+  <nav class="nav">
+    <a class="nav-link" href="index.html">الرئيسية</a>
+    <a class="nav-link" href="group.html?g=A">المجموعة A</a>
+    <a class="nav-link" href="group.html?g=B">المجموعة B</a>
+    <a class="nav-link" href="group.html?g=C">المجموعة C</a>
+    <a class="nav-link" href="group.html?g=D">المجموعة D</a>
+    <a class="nav-link" href="groups_all.html">ترتيب جميع المجموعات</a>
+    <a class="nav-link" href="awards.html">الجوائز الفردية</a>
+    <a class="nav-link" href="knockout.html">الأدوار النهائية</a>
+  </nav>
+</header>
+
+<main class="container">
+  <section class="card">
+    <div class="card-h">
+      <h2 id="matchTitle">المباراة</h2>
+      <div class="badge" id="matchCode">--</div>
+    </div>
+    <div class="card-b">
+      <div class="grid2">
+        <div class="kv">
+          <div class="k">المجموعة</div>
+          <div class="v" id="matchGroup">-</div>
+        </div>
+        <div class="kv">
+          <div class="k">الجولة</div>
+          <div class="v" id="matchRound">-</div>
+        </div>
+        <div class="kv">
+          <div class="k">التاريخ</div>
+          <div class="v" id="matchDate">-</div>
+        </div>
+        <div class="kv">
+          <div class="k">الوقت</div>
+          <div class="v" id="matchTime">-</div>
+        </div>
+        <div class="kv">
+          <div class="k">حكم المباراة</div>
+          <div class="v" id="matchRef">-</div>
+        </div>
+        <div class="kv">
+          <div class="k">معلق المباراة</div>
+          <div class="v" id="matchComm">-</div>
+        </div>
+        <div class="kv">
+          <div class="k">أفضل لاعب</div>
+          <div class="v" id="matchPOM">-</div>
+        </div>
+        <div class="kv">
+          <div class="k">استخدام VAR</div>
+          <div class="v" id="matchVAR">-</div>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <div class="scoreline" id="scoreLine"></div>
+
+      <div class="goals">
+        <div class="goals-col">
+          <h3>هدافو الفريق 1</h3>
+          <ul id="goals1"></ul>
+        </div>
+        <div class="goals-col">
+          <h3>هدافو الفريق 2</h3>
+          <ul id="goals2"></ul>
+        </div>
+      </div>
+
+      
+      <div class="goals" style="margin-top:16px">
+        <div class="goals-col">
+          <h3>بطاقات الفريق 1</h3>
+          <div class="muted" style="margin:6px 0 4px">🟨 صفراء</div>
+          <ul id="yellows1"></ul>
+          <div class="muted" style="margin:10px 0 4px">🟥 حمراء</div>
+          <ul id="reds1"></ul>
+        </div>
+        <div class="goals-col">
+          <h3>بطاقات الفريق 2</h3>
+          <div class="muted" style="margin:6px 0 4px">🟨 صفراء</div>
+          <ul id="yellows2"></ul>
+          <div class="muted" style="margin:10px 0 4px">🟥 حمراء</div>
+          <ul id="reds2"></ul>
+        </div>
+      </div>
+
+      <div id="loadError" class="note hidden"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  © بطولة كأس منصور بن زايد 2026
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  CupApp.initMatch();
+</script>
+</body>
+</html>

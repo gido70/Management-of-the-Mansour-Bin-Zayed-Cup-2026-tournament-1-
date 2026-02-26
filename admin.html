@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>لوحة الإدارة — كأس منصور 2026</title>
+  <link rel="icon" type="image/png" href="assets/img/logo-tournament.png">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .admin-wrap{max-width:980px;margin:0 auto}
+    .admin-grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:820px){.admin-grid{grid-template-columns:1fr 1fr}}
+    .box{border:1px solid rgba(255,255,255,.15);border-radius:14px;padding:14px;background:rgba(255,255,255,.04)}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .row > *{flex:1 1 180px}
+    input, select, textarea{
+      width:100%;padding:10px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.25);color:#fff;outline:none
+    }
+    textarea{min-height:90px}
+    .btn{cursor:pointer}
+    .btn.small{padding:10px 12px;border-radius:12px}
+    .hint{font-size:13px;opacity:.9}
+    .gate{max-width:520px;margin:40px auto}
+    .hidden{display:none !important}
+    .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.1);margin:4px 0}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:12px}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-logos">
+    <img class="logo" src="assets/img/logo-committee-white.png" alt="شعار اللجنة" />
+  </div>
+  <div class="brand">
+    <div class="brand-title">بطولة كأس منصور بن زايد 2026</div>
+    <div class="brand-sub">لوحة الإدارة (مخفية)</div>
+  </div>
+  <div class="topbar-logos">
+    <img class="logo" src="assets/img/logo-cup-white.png" alt="شعار البطولة" />
+  </div>
+  <nav class="nav">
+    <a class="nav-link" href="index.html">الرئيسية</a>
+    <a class="nav-link" href="group.html?g=A">المجموعات</a>
+    <a class="nav-link" href="knockout.html">الأدوار النهائية</a>
+  </nav>
+</header>
+
+<main class="container admin-wrap">
+  <section class="card gate" id="gate">
+    <div class="card-h">
+      <h2>دخول لوحة الإدارة</h2>
+      <div class="badge">PIN</div>
+    </div>
+    <div class="card-b">
+      <div class="hint">أدخل الرقم السري (PIN). لا يوجد حسابات ولا كلمة مرور طويلة.</div>
+      <div style="height:10px"></div>
+      <div class="row">
+        <input id="pin" inputmode="numeric" placeholder="اكتب PIN" />
+        <button class="btn btn-ga small" id="btnLogin">دخول</button>
+      </div>
+      <div id="gateMsg" class="note hidden" style="margin-top:10px"></div>
+      <div class="hint" style="margin-top:10px">
+        ملاحظة: هذه الصفحة لا تظهر في القوائم العامة. الحماية هنا “عملية” وليست حماية سيرفر 100%.
+      </div>
+    </div>
+  </section>
+
+  <section class="card hidden" id="panel">
+    <div class="card-h">
+      <h2>تحديث سريع — النتائج / الهدافون / VAR / الكروت</h2>
+      <div class="badge" id="dataStatus">جاهز</div>
+    </div>
+
+    <div class="card-b">
+      <div class="admin-grid">
+        <div class="box">
+          <div class="row">
+            <select id="matchSelect"></select>
+            <button class="btn btn-gb small" id="btnLoadMatch">تحميل</button>
+          </div>
+          <div class="hint" id="matchMeta" style="margin-top:8px"></div>
+
+          <div style="height:10px"></div>
+          <div class="row">
+            <input id="score1" placeholder="نتيجة الفريق 1" inputmode="numeric" />
+            <input id="score2" placeholder="نتيجة الفريق 2" inputmode="numeric" />
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="row">
+            <select id="ref1"></select>
+            <select id="ref2"></select>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="row">
+            <select id="commentator"></select>
+            <select id="pom"></select>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="row">
+            <label class="field-label">استخدام VAR (الفريق 1)</label>
+<select id="var1" class="pill"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+            <label class="field-label">استخدام VAR (الفريق 2)</label>
+<select id="var2" class="pill"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="row">
+            <button class="btn btn-gc small" id="btnSaveRow">حفظ داخل اللوحة</button>
+            <button class="btn btn-gd small" id="btnResetRow">تراجع</button>
+          </div>
+          <div class="hint" style="margin-top:8px">
+            “حفظ داخل اللوحة” لا يرفع GitHub تلقائيًا — لكنه يحضّر لك ملف matches.csv جاهز للتنزيل/الرفع.
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="hint"><b>الهدافون (بدون كتابة أسماء)</b></div>
+          <div class="row" style="margin-top:8px">
+            <select id="side"></select>
+            <select id="player"></select>
+            <button class="btn btn-ga small" id="btnGoal">+ هدف</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-gb small" id="btnUndoGoal">تراجع آخر هدف</button>
+            <button class="btn btn-gc small" id="btnClearGoals">مسح الهدافين</button>
+          </div>
+
+          <div style="height:10px"></div>
+          <div class="hint"><b>الكروت</b></div>
+          <div class="row" style="margin-top:8px">
+            <select id="cardSide"></select>
+            <select id="cardPlayer"></select>
+            <button class="btn btn-gb small" id="btnYellow">🟨 أصفر</button>
+            <button class="btn btn-gd small" id="btnRed">🟥 أحمر</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-gc small" id="btnUndoCard">تراجع آخر كرت</button>
+            <button class="btn btn-gc small" id="btnClearCards">مسح الكروت</button>
+          </div>
+
+          <div style="height:12px"></div>
+          <div class="hint"><b>الملخص (يظهر في صفحة المباراة)</b></div>
+          <div class="pill">الفريق 1 — الهدافون</div>
+          <div class="mono" id="goalsPreview1">—</div>
+          <div class="pill">الفريق 2 — الهدافون</div>
+          <div class="mono" id="goalsPreview2">—</div>
+          <div class="pill">الفريق 1 — كروت</div>
+          <div class="mono" id="cardsPreview1">—</div>
+          <div class="pill">الفريق 2 — كروت</div>
+          <div class="mono" id="cardsPreview2">—</div>
+        </div>
+      </div>
+
+      <hr class="sep" />
+
+      <div class="box">
+        <div class="row">
+          <button class="btn btn-ga small" id="btnDownload">تنزيل matches.csv</button>
+          <button class="btn btn-gb small" id="btnCopy">نسخ محتوى CSV</button>
+        </div>
+        <div class="hint" style="margin-top:8px">
+          بعد التنزيل: ادخل GitHub → افتح <span class="mono">data/matches.csv</span> → Upload/Replace → Commit.
+        </div>
+        <textarea id="csvOut" class="mono" readonly></textarea>
+      </div>
+
+      <div id="panelMsg" class="note hidden" style="margin-top:12px"></div>
+    </div>
+  </section>
+
+<section class="card">
+  <h2 class="card-title">الجوائز الفردية (اختيار من القوائم)</h2>
+  <div class="grid-2">
+    <div class="field">
+      <label class="field-label">الفائز بالبطولة</label>
+      <select id="award_bestTeam" class="pill"></select>
+    </div>
+    <div class="field">
+      <label class="field-label">هداف البطولة</label>
+      <select id="award_topScorer" class="pill"></select>
+    </div>
+    <div class="field">
+      <label class="field-label">أفضل لاعب</label>
+      <select id="award_bestPlayer" class="pill"></select>
+    </div>
+    <div class="field">
+      <label class="field-label">أفضل حارس</label>
+      <select id="award_bestGK" class="pill"></select>
+    </div>
+    <div class="field">
+      <label class="field-label">إداري الفريق</label>
+      <select id="award_bestAdmin" class="pill"></select>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="award_save" class="btn primary">إنشاء ملف awards.json</button>
+    <button id="award_download" class="btn">تنزيل awards.json</button>
+  </div>
+
+  <textarea id="award_json" class="csv-box" rows="10" spellcheck="false" dir="ltr"></textarea>
+  <div class="hint">بعد التنزيل: ضع الملف داخل <b>data/awards.json</b> ثم ارفعه إلى GitHub (Upload/Replace) ثم Commit.</div>
+</section>
+
+</main>
+
+<footer class="footer">
+  © بطولة كأس منصور بن زايد 2026 — لوحة الإدارة
+</footer>
+
+<script src="assets/js/admin.js"></script>
+  <script src="assets/js/admin_awards.js"></script>
+</body>
+</html>
