@@ -1,202 +1,150 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>كأس منصور بن زايد 2026 | المنصة الرسمية</title>
-
-  <style>
-    :root{
-      --blue1:#00c6ff;
-      --blue2:#0072ff;
-      --glass: rgba(0, 20, 40, .55);
-      --text:#ffffff;
-    }
-
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
-      color:var(--text);
-      min-height:100vh;
-
-      /* ✅ ضع صورة البطولة هنا */
-      background:
-        radial-gradient(1200px 600px at 50% 60%, rgba(0,198,255,.22), rgba(0,0,0,0) 60%),
-        linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.75)),
-        url("hero.jpg") center/cover no-repeat fixed;
-    }
-
-    .wrap{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:28px;
-    }
-
-    .card{
-      width:min(920px, 100%);
-      background: var(--glass);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:22px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.45);
-      backdrop-filter: blur(10px);
-      padding:28px;
-    }
-
-    .top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);
-      font-weight:600;
-      letter-spacing:.2px;
-      font-size:14px;
-    }
-
-    .badge span.dot{
-      width:10px;height:10px;border-radius:50%;
-      background: linear-gradient(135deg, var(--blue1), var(--blue2));
-      box-shadow: 0 0 12px rgba(0,198,255,.9);
-      display:inline-block;
-    }
-
-    h1{
-      margin:14px 0 8px;
-      font-size: clamp(26px, 4vw, 42px);
-      line-height:1.15;
-    }
-
-    .sub{
-      margin:0 0 22px;
-      opacity:.9;
-      font-size: clamp(14px, 2vw, 18px);
-      line-height:1.8;
-    }
-
-    .actions{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:10px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:14px 22px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      text-decoration:none;
-      color:#fff;
-      font-weight:800;
-      font-size:18px;
-      transition: .22s ease;
-      user-select:none;
-      cursor:pointer;
-    }
-
-    .btn-primary{
-      background: linear-gradient(135deg, var(--blue1), var(--blue2));
-      box-shadow: 0 0 22px rgba(0,198,255,.35);
-      border:none;
-    }
-
-    .btn-primary:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 0 36px rgba(0,198,255,.55);
-    }
-
-    .btn-ghost{
-      background: rgba(255,255,255,.06);
-    }
-
-    .btn-ghost:hover{
-      background: rgba(255,255,255,.10);
-      transform: translateY(-2px);
-    }
-
-    .note{
-      margin-top:18px;
-      padding-top:16px;
-      border-top:1px solid rgba(255,255,255,.12);
-      display:flex;
-      justify-content:space-between;
-      gap:14px;
-      flex-wrap:wrap;
-      opacity:.92;
-      font-size:14px;
-      line-height:1.7;
-    }
-
-    .small{
-      opacity:.8;
-      font-size:13px;
-    }
-
-    /* ✅ موبايل */
-    @media (max-width:520px){
-      .card{ padding:18px; }
-      .actions .btn{ width:100%; }
-      .note{ flex-direction:column; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>بطولة كأس منصور بن زايد 2026</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-  <div class="wrap">
-    <main class="card" role="main" aria-label="الصفحة التعريفية">
-      <div class="top">
-        <div class="badge">
-          <span class="dot"></span>
-          <span>المنصة الرسمية لإدارة البطولة</span>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">بطولة كأس منصور بن زايد 2026</h1>
+    </div>
+    <nav class="nav">
+    <a class="nav-link" href="index.html">الرئيسية</a>
+    <a class="nav-link" href="group.html?g=A">المجموعة A</a>
+    <a class="nav-link" href="group.html?g=B">المجموعة B</a>
+    <a class="nav-link" href="group.html?g=C">المجموعة C</a>
+    <a class="nav-link" href="group.html?g=D">المجموعة D</a>
+    <a class="nav-link" href="groups_all.html">ترتيب جميع المجموعات</a>
+    <a class="nav-link" href="awards.html">الجوائز الفردية</a>
+    <a class="nav-link" href="knockout.html">الأدوار النهائية</a>
+  </nav>
+  </header>
+
+  <main class="container">
+    <div class="page-head">
+      <h2 class="page-title">ترتيب جميع المجموعات</h2>
+      <div id="loadError" class="alert hidden"></div>
+    </div>
+
+    <div class="grid-2">
+      
+      <section class="card" id="grp_A">
+        <div class="card-head">
+          <div class="card-title">المجموعة (A)</div>
+          <div class="badge">0</div>
         </div>
-        <div class="small">2026</div>
-      </div>
-
-      <h1>بطولة كأس منصور بن زايد لكرة القدم 2026</h1>
-      <p class="sub">
-        أهلاً بك في البوابة الرقمية الرسمية للبطولة. اضغط للدخول إلى منصة الإدارة والمتابعة.
-      </p>
-
-      <div class="actions">
-        <!-- ✅ هذا هو رابطك الطويل، مخفي خلف زر جميل -->
-        <a class="btn btn-primary"
-           href="https://gido70.github.io/Management-of-the-Mansour-Bin-Zayed-Cup-2026-tournament-1-/index.html">
-          الدخول إلى المنصة
-        </a>
-
-        <!-- زر اختياري (مثلاً صفحة المجموعات/العرض) -->
-        <a class="btn btn-ghost"
-           href="https://gido70.github.io/Mansour---Bin---Zaid-Cup-2026-/group.html?g=D">
-          عرض المجموعات
-        </a>
-      </div>
-
-      <div class="note">
-        <div>
-          <strong>ملاحظة:</strong> إذا فتحت الصفحة من هاتف، الأفضل تفعيل وضع ملء الشاشة للعرض.
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>م</th>
+                <th>اسم الفريق</th>
+                <th>لعب</th>
+                <th>فوز</th>
+                <th>تعادل</th>
+                <th>خسارة</th>
+                <th>له</th>
+                <th>عليه</th>
+                <th>الفرق</th>
+                <th>النقاط</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-        <div class="small">
-          © كأس منصور بن زايد — 2026
+      </section>
+    
+      <section class="card" id="grp_B">
+        <div class="card-head">
+          <div class="card-title">المجموعة (B)</div>
+          <div class="badge">0</div>
         </div>
-      </div>
-    </main>
-  </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>م</th>
+                <th>اسم الفريق</th>
+                <th>لعب</th>
+                <th>فوز</th>
+                <th>تعادل</th>
+                <th>خسارة</th>
+                <th>له</th>
+                <th>عليه</th>
+                <th>الفرق</th>
+                <th>النقاط</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="card" id="grp_C">
+        <div class="card-head">
+          <div class="card-title">المجموعة (C)</div>
+          <div class="badge">0</div>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>م</th>
+                <th>اسم الفريق</th>
+                <th>لعب</th>
+                <th>فوز</th>
+                <th>تعادل</th>
+                <th>خسارة</th>
+                <th>له</th>
+                <th>عليه</th>
+                <th>الفرق</th>
+                <th>النقاط</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="card" id="grp_D">
+        <div class="card-head">
+          <div class="card-title">المجموعة (D)</div>
+          <div class="badge">0</div>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>م</th>
+                <th>اسم الفريق</th>
+                <th>لعب</th>
+                <th>فوز</th>
+                <th>تعادل</th>
+                <th>خسارة</th>
+                <th>له</th>
+                <th>عليه</th>
+                <th>الفرق</th>
+                <th>النقاط</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    
+    </div>
+  </main>
+
+  <script src="assets/js/groups_all.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', ()=>CupApp.initGroupsAll && CupApp.initGroupsAll());</script>
+
+  <footer class="site-footer">
+    <div class="footer-inner">© بطولة كأس منصور بن زايد 2026</div>
+  </footer>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
